@@ -1,0 +1,946 @@
+/*
+Theme Name: Afroempreendendo
+Theme URI: https://cacaucriativa.com.br
+Author:Cacau Criativa
+Author URI: https://cacaucriativa.com.br
+Description: Um site desenvolvido com Html e CSS e convertido para Wordpress pela Cacau Criativa para Afroempreendendo. Em caso de suporte entrar em contato com helder@cacaucriativa.com.br
+Version: 1.0.0
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color: #b56728;
+    --secondary-color:#884c20;
+    --color-neutral-0: #b56728;
+    --color-neutral-10: #884c20;
+    --color-neutral-30: #a8a29e;
+    --color-neutral-40: #f5f5f5;
+    --color-menu-top-color: #b56728;
+    --color-logo: #ececec;
+    --color-top-menu: #fff;
+    --color-title-subtitle-top: #fff;
+    --color-btn-topo: #fff;
+    --color-btn-topo-border: #fff;
+    --color-btn-topo-hover: #d8d8d8; 
+    --color-services-background: #884c20;
+}
+
+/* Tipografia */
+body {
+    font-family: "Poppins", "inter", sans-serif;
+    background: var(--color-menu-top-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: var(--color-neutral-0);
+    margin-top: 40px;
+}
+
+/*Menu */
+header a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+header a:hover{
+    opacity: 0.7;
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Mantém a imagem e o texto alinhados verticalmente */
+    font-family: "Poppins";
+    font-weight: 700;
+    font-size: 18px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Altere para space-between para garantir que o logotipo e o menu hambúrguer fiquem nos extremos */
+    align-items: center;
+    height: 10vh;
+    overflow: hidden;
+    padding: 0 20px; /* Adicione preenchimento aos lados para espaçamento entre o logotipo e o menu hambúrguer */
+}
+
+nav img {
+    width: 60px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Remova a margem superior */
+}
+
+.nav-list li {
+    letter-spacing: 2px;
+    margin-left: 32px;
+}
+
+.mobile-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
+
+@media (max-width: 999px) {
+    body {
+        overflow-x: hidden; /* Oculta o overflow horizontal */
+    }
+
+    nav {
+        padding: 0 10px; /* Reduza o preenchimento para melhorar a aparência em dispositivos móveis */
+    }
+
+    .nav-list {
+        position: absolute;
+        top: 10vh; /* Defina a distância do topo para evitar sobreposição com a barra de navegação */
+        right: 0;
+        width: 50vw;
+        height: 90vh; /* Ajuste a altura para evitar que o conteúdo seja cortado */
+        background: var(--color-menu-top-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 10;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .nav-list li {
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .nav-list.active {
+        transform: translateX(0);
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .mobile-menu {
+        display: block;
+        position: absolute; /* Altere o posicionamento para absoluto */
+        top: 50%; /* Alinhe o menu hambúrguer ao centro vertical */
+        right: 10px; /* Defina uma distância do lado direito da tela */
+        transform: translateY(-50%); /* Centralize verticalmente */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.active {
+        transform: rotate(90deg);
+    }
+    .mobile-menu.active .line1 {
+        transform: rotate(-45deg) translate(-8px, 8px);
+    }
+    
+    .mobile-menu.active .line2 {
+        opacity: 0;
+    }
+    
+    .mobile-menu.active .line3 {
+        transform: rotate(45deg) translate(-5px, -7px);
+    }
+    
+    #banner {
+        width: 100vw;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-list.active + #banner {
+        width: 50vw;
+    }
+}
+/* Banner */
+#banner {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
+                url("/wp-content/themes/afroempreendendo/img/marca-apenas-africa-afroempreendendo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 80% center;
+    height: 92vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10%;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+#banner {
+    position: relative;
+    height: 92vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10%;
+}
+
+.fade-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Um fundo semi-transparente */
+}
+
+.banner-content {
+    position: relative; /* Mantém o conteúdo por cima da camada de fade */
+    z-index: 1; /* Garante que o conteúdo esteja visível */
+    padding-left: 10%;
+    text-align: left;
+}
+
+#banner h1{
+    font-family: "Poppins";
+    margin-bottom: 35px;
+    color: #fff;
+}
+
+#banner p {
+    font-family: "Inter";
+    color: #fff;
+}
+
+#banner a{
+    text-decoration: none;
+}
+
+.banner-content {
+    padding-left: 10%; /* Deixar espaço para o conteúdo à esquerda */
+    text-align: left; /* Manter o texto alinhado à esquerda */
+}
+
+.btn-topo {
+    font-family: "Inter";
+    background:transparent;
+    font-size: 18px;
+    border: 2px solid var(--color-btn-topo-border);
+    outline: none;
+    padding: 5px 25px;
+    color: var(--color-btn-topo);
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.btn-topo:hover{
+    color:var(--color-btn-topo-hover);
+    border-color: var(--color-btn-topo-hover);
+}
+
+.content-left {
+    max-width: 60%; /* Limitar a largura do conteúdo */
+}
+
+.banner-content h1 {
+    font-weight: bold;
+}
+
+
+/* Serviços */
+
+#servicos {
+    min-height: 700px;
+    width: 100%;
+    background: var(--color-services-background);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden; /* Oculta o overflow horizontal */
+}
+
+#conteudo button {
+    align-items: center;
+}
+
+#conteudo h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#servicos h2::after {
+    position: absolute;
+    content: " ";
+    top: 30%;
+    left: -30px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-left: 20px solid var(--primary-color);
+}
+
+#servicos h2::before {
+    position: absolute;
+    content: " ";
+    top: 30%;
+    right: -30px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-right: 20px solid var(--primary-color);
+}
+
+#servicos #paragrafo {
+    width: 80%; /* Ajuste a largura do parágrafo para ocupar mais espaço */
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 1.5rem;
+    white-space: 1px;
+    margin-bottom: 40px; /* Adicione um espaço extra na parte inferior */
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Use auto-fit para quebrar os cards automaticamente em várias linhas */
+    gap: 25px;
+    z-index: 9;
+    margin-top: 20px;
+    padding: 0 20px; /* Adicione um espaçamento lateral */
+}
+
+.cards .card {
+    height: auto; /* Altere a altura para auto para acomodar o conteúdo */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px; /* Adicione preenchimento interno */
+    background-color: rgba(0, 0, 0, 0.6);  /* Altere a cor de fundo para ter transparência */
+    position: relative;
+    border-radius: 10px;
+}
+
+.cards .card::before {
+    position: absolute;
+    content: " ";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background: var(--primary-color);
+    transform: rotate(0deg);
+    z-index: -1;
+}
+
+.cards .card:hover.card::before {
+    transform: rotate(10deg);
+}
+
+.cards .card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-top: 20px; /* Reduza a margem superior */
+    margin-bottom: 10px;
+}
+
+.cards .card h3 {
+    font-size: 1.5rem; /* Reduza o tamanho da fonte do título */
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.cards .card .conteudo p {
+    color: rgba(255, 255, 255, .8); /* Ajuste a opacidade do texto */
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+@media (max-width: 999px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr); /* Altera para uma única coluna */
+        margin-top: 40px; /* Adiciona um espaço extra entre as seções */
+        padding: 0; /* Remova o preenchimento lateral */
+    }
+
+    .cards .card {
+        width: 80%; /* Define a largura para ocupar a maior parte da largura da tela */
+        margin: 0 auto; /* Centraliza os cards horizontalmente */
+        margin-bottom: 20px; /* Adiciona espaço entre os cards */
+    }
+
+    #servicos #paragrafo {
+        width: 90%; /* Ajuste a largura do parágrafo para ocupar mais espaço */
+    }
+}
+
+/*Sobre nós*/
+.sessao-sobre{
+    background: url("/wp-content/themes/afroempreendendo/img/sesssaosobre.jpg") no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.sobre-container{
+    width: 55%;
+    float: right;
+    background-color: var(--secondary-color);
+    padding: 150px;
+}
+
+.sobre-container h1{
+    font-family: "Poppins";
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fdfdfd;
+}
+
+.sobre-container span{
+    font-family: "Inter";
+    color: #fdfdfd;
+}
+
+.sessao-text{
+    font-family: "Inter";
+    font-size: 13px;
+    color: #fdfdfd;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.habilidades{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 767px) {
+    .sobre-container {
+        width: 90%; /* Ajuste a largura conforme necessário */
+        max-width: 90%; /* Defina a largura máxima para evitar que o conteúdo fique muito largo */
+        padding: 20px; /* Reduza o padding para evitar espaçamentos excessivos */
+    }
+
+    .sobre-container h1 {
+        font-size: 1.5rem; /* Ajuste o tamanho da fonte para telas menores */
+    }
+
+    .sessao-text {
+        font-size: 1rem; /* Ajuste o tamanho da fonte para telas menores */
+    }
+}
+
+/* Blog */
+#blog {
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo */
+    padding: 40px;
+    border-bottom: 1px solid black; /* Linha separadora */
+}
+
+.blog-heading {
+    text-align: center; /* Alinha texto no centro */
+}
+
+.blog-heading span {
+    color: #fff;
+}
+
+.blog-heading h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-top: 10px; /* Adiciona espaço entre elementos */
+}
+
+.blog-container {
+    display: flex;
+    flex-direction: row; /* Elementos organizados em linha */
+    justify-content: center; /* Centraliza o conteúdo */
+    flex-wrap: wrap; /* Permite que os itens se ajustem em várias linhas */
+    margin: 20px 0px;
+}
+
+.blog-box {
+    width: 30%; /* Alinha três boxes por linha */
+    background-color: #3b3b3b;
+    border: 1px solid #3b3b3b;
+    margin: 20px 1%; /* Espaço entre as boxes */
+}
+
+.blog-img img {
+    width: 100%;
+    height: 200px; /* Define uma altura fixa */
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+}
+
+.blog-text {
+    padding: 20px; /* Reduz o padding */
+    display: flex;
+    flex-direction: column; /* Alinha o conteúdo verticalmente */
+}
+
+.blog-text span {
+    color: var(--color-neutral-0);
+    font-size: 0.9rem;
+}
+
+.blog-text .blog-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.blog-text p {
+    color: #ececec;
+}
+
+.blog-text a {
+    color: var(--color-neutral-30);
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.blog-text a:hover {
+    color: var(--color-neutral-0); /* Cor de destaque ao passar o mouse */
+}
+
+@media (max-width: 1200px) {
+    .blog-box {
+        width: 50%; /* Ajusta a largura para telas menores */
+    }
+}
+
+@media (max-width: 900px) {
+    .blog-box {
+        width: 70%; /* Ajusta para dispositivos de menor largura */
+    }
+}
+
+@media (max-width: 550px) {
+    .blog-box {
+        width: 100%; /* Para dispositivos móveis */
+    }
+
+    #blog {
+        padding: 20px; /* Reduz o padding para telas menores */
+    }
+}
+
+
+
+/* Custom CSS for Cacau Criativa */
+
+/* Contêiner Principal */
+.contact-container {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
+    url("/wp-content/themes/afroempreendendo/img/time-afroempreendendo.jpg");
+    background-size: cover;
+    background-position: right;
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: row; /* Para garantir disposição em linha para telas maiores */
+    gap: 20px; /* Espaçamento entre elementos filhos */
+}
+
+/* Camada de fundo transparente */
+.contact-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Cor de fundo transparente */
+    z-index: -1;
+}
+
+/* Estilo para a seção da esquerda (envio de email) */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo na seção esquerda */
+    gap: 20px; /* Espaçamento entre elementos */
+    flex: 1; /* Mantém proporção com a seção direita */
+}
+
+.contact-left h2{
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #ececec;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+/* Estilo para a seção da direita (agendamento) */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo na seção direita */
+    justify-content: center; /* Alinhamento vertical */
+    flex: 1; /* Mantém proporção com a seção esquerda */
+    padding-top: 20px; /* Adiciona um pouco de espaçamento no topo */
+}
+
+/* Estilos para os títulos da esquerda e direita */
+.contact-left-title h2,
+.contact-right h2 {
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #ececec;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+/* Barra de separação abaixo do título */
+.contact-left-title hr {
+    border: none;
+    width: 310px;
+    height: 5px;
+    background-color: var(--color-neutral-10);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para os inputs do formulário */
+.contact-inputs {
+    display: block; /* Ajusta a exibição para inputs */
+    width: 400px; /* Largura dos inputs */
+    height: 50px;
+    padding-left: 25px; /* Espaçamento interno */
+    font-weight: 500;
+    color: var(--color-neutral-0);
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    margin: 9px; /* Margem externa */
+}
+
+/* Estilo para textarea */
+.contact-left-textarea {
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px;
+}
+
+/* Foco nos inputs */
+.contact-inputs:focus {
+    border: 2px solid #ff994f; /* Cor do foco */
+}
+
+/* Estilos para o botão customizado */
+.custom-button {
+    display: flex;
+    align-items: center; /* Para alinhamento vertical dos elementos internos */
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    gap: 10px; /* Espaçamento entre elementos internos */
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(270deg, var(--color-neutral-0), var(--color-neutral-10));
+    background-size: 200% 100%; /* Para o efeito do gradiente */
+    background-position: left;
+    transition: background-position 0.4s;
+}
+
+/* Efeito hover para o botão */
+.custom-button:hover {
+    background-position: right; /* Posição final ao passar o mouse */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 800px) {
+    .contact-container {
+        flex-direction: column; /* Alinhamento vertical para telas menores */
+        justify-content: center; /* Centraliza o conteúdo */
+    }
+
+    .contact-inputs {
+        flex: 1;
+        width: 80vw; /* Ajusta largura para dispositivos móveis */
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%; /* Usa 100% da largura */
+    }
+
+    .contact-right {
+        margin-top: 10%; /* Adiciona espaçamento no topo */
+    }
+}
+
+  /* Footer */
+footer {
+    width: 100%; 
+    color: var(--color-neutral-40);
+}
+
+#footer-content {
+    background-color: var(--color-neutral-10);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Reduz para 4 colunas para melhor espaçamento */
+    padding: 3rem 3.5rem;
+    gap: 1.5rem; /* Espaçamento entre elementos do grid */
+}
+
+#footer-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo na coluna */
+}
+
+#footer-contacts h1 {
+    font-family: "Poppins";
+    font-size: 18px;
+    margin-bottom: 0.75rem; /* Corrige o uso de ponto decimal para espaçamento */
+    margin-top: -5px;
+}
+
+#footer-contacts img {
+    width:50px;
+}
+
+#footer-social-media {
+    display: flex;
+    gap: 1rem; /* Reduz o gap para 1rem */
+    margin-top: 1.5rem;
+}
+
+#footer-social-media .footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--color-neutral-40);
+    border-radius: 50%;
+    transition: all 0.4s;
+}
+
+#footer-social-media .footer-link:hover {
+    opacity: 0.8;
+}
+
+#instagram {
+    background: linear-gradient(#7f3fc9, #ff2992, #ff9807);
+}
+
+#facebook {
+    background-color: #4267b3;
+}
+
+#linkedin {
+    background-color: #00537f;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Ajusta o gap */
+    list-style: none;
+    padding: 0; /* Remove a margem e o padding padrão */
+    margin: 0; /* Remover a margem e o padding padrão */
+}
+
+.footer-list h3 {
+    font-family: "Poppins"; /* Adiciona um estilo comum */
+}
+
+.footer-list .footer-link {
+    text-decoration: none; 
+    color: var(--color-neutral-30);
+    transition: all 0.4s;
+}
+
+.footer-list .footer-link:hover {
+    color: #7f37c9;
+}
+
+#footer-subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo nesta coluna */
+    gap: 1.5rem; /* Adiciona espaçamento entre elementos */
+}
+
+#footer-subscribe p {
+    color: var(--color-neutral-30);
+}
+
+#input-group {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-neutral-0);
+    border-radius: 4px;
+    padding: 0; /* Remove padding extra */
+}
+
+#input-group input {
+    all: unset;
+    padding: 0.75rem; 
+    width: 100%;
+}
+
+#input-group button {
+    background-color: var(--color-neutral-10);
+    border: none;
+    color: var(--color-neutral-40);
+    padding: 0px 1.25rem;
+    font-size: 1.25rem;
+    height: 100%;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#input-group button:hover {
+    opacity: 0.8;
+}
+
+#footer-copyriting {
+    display: flex;
+    justify-content: center; /* Centraliza o texto de direitos autorais */
+    background-color: var(--color-neutral-0);
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    font-weight: 100;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    #footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Altera para 2 colunas */
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    #footer-content {
+        grid-template-columns: repeat(1, 1fr); /* Altera para 1 coluna para dispositivos móveis */
+        padding: 3rem 2rem;
+    }
+}
+
+.post-wrapper {
+    padding: 20px;
+    background-color: --color-neutral-0;
+    margin-top: 200px; /* Espaçamento acima da postagem */
+}
+
+/* Estilos para a sessão de comentários */
+#comments {
+    margin-top: 40px; /* Adiciona espaço entre o conteúdo e a sessão de comentários */
+    padding: 20px;
+    background-color: var(--color-neutral-40); /* Cor de fundo neutra */
+    border: 1px solid var(--color-neutral-30); /* Adiciona borda com cor neutra */
+    border-radius: 8px; /* Adiciona bordas arredondadas */
+}
+
+#comments .comment {
+    margin-bottom: 30px;
+}
+
+#comments .comment-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#comments .comment-metadata {
+    font-style: italic;
+    color: var(--color-neutral-30); /* Cor de texto neutra */
+}
+
+#comments .comment-content {
+    margin-top: 10px;
+}
+
+#comments .comment-reply-link {
+    color: var(--primary-color); /* Cor do link principal */
+    text-decoration: none;
+}
+
+#respond {
+    margin-top: 30px;
+    background-color: var(--color-neutral-40); /* Cor de fundo neutra */
+    border: 1px solid var(--color-neutral-30); /* Adiciona borda com cor neutra */
+    border-radius: 8px; /* Adiciona bordas arredondadas */
+    padding: 20px;
+}
+
+#respond input[type="text"],
+#respond textarea {
+    width: 100%; /* Define a largura da caixa de texto */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-neutral-30); /* Adiciona borda com cor neutra */
+    border-radius: 6px; /* Adiciona bordas arredondadas */
+    box-sizing: border-box; /* Garante que o padding não altere a largura total */
+}
+
+#respond input[type="submit"] {
+    width: 100%; /* Botão ocupa toda a largura disponível */
+    background-color: var(--primary-color); /* Cor do botão principal */
+    color: var(--color-btn-topo); /* Cor do texto do botão */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px; /* Adiciona bordas arredondadas */
+}
+
+#respond input[type="submit"]:hover {
+    background-color: var(--color-btn-topo-hover); /* Cor de fundo do botão ao passar o mouse */
+}
+
+/* Estilos para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    #respond input[type="text"],
+    #respond textarea {
+        width: calc(100% - 20px); /* Reduz a largura da caixa de texto para dispositivos móveis */
+    }
+
+    #respond input[type="submit"] {
+        width: 100%; /* Botão ocupa toda a largura disponível */
+    }
+}
